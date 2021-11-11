@@ -10,10 +10,10 @@ export class Team {
   ) {}
 
   /**
-   *発足日のフォーマッティング
+   *発足日のフォーマッティング.
    * @returns フォーマッティングした発足日
    */
-  get getformat(): string {
+  get formatStartDate(): string {
     return format(this.startDate, 'yyyy年MM年dd月');
   }
   public get id(): number {

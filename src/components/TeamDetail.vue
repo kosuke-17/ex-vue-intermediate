@@ -5,7 +5,7 @@
     <h2>本拠地</h2>
     <div>{{ currentTeam.homePlace }}</div>
     <h2>発足日</h2>
-    <div>{{ currentTeam.getformat() }}</div>
+    <div>{{ currentTeam.formatStartDate }}</div>
     <h2>歴史</h2>
     <pre>{{ currentTeam.history }}</pre>
     <button type="button" @click="onback">戻る</button>
@@ -21,7 +21,7 @@ export default class BaseballTeam extends Vue {
   private currentTeam!: Team;
 
   /**
-   * チームの詳細情報を表示
+   * チームの詳細情報を表示.
    */
   created(): void {
     const teamId = parseInt(this['$route'].params.id);
@@ -29,7 +29,7 @@ export default class BaseballTeam extends Vue {
   }
 
   /**
-   * チーム一覧を表示する
+   * チーム一覧を表示する.
    */
   onback(): void {
     this['$router'].push('/Ex01');

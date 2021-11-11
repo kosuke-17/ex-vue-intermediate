@@ -19,7 +19,7 @@ import store from '../store';
 @Component({})
 export default class baseballTeamList extends Vue {
   /**
-   * チーム一覧を表示
+   * チーム一覧を表示.
    * @returns チーム一覧を表示
    */
   get teams(): Team[] {
