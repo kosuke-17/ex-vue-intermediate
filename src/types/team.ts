@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export class Team {
   constructor(
     private _id: number,
@@ -7,6 +9,9 @@ export class Team {
     private _history: string
   ) {}
 
+  getformat(): string {
+    return format(this.startDate, 'yyyy年MM年dd月');
+  }
   public get id(): number {
     return this._id;
   }
