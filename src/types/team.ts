@@ -9,6 +9,10 @@ export class Team {
     private _history: string
   ) {}
 
+  /**
+   *発足日のフォーマッティング
+   * @returns フォーマッティングした発足日
+   */
   getformat(): string {
     return format(this.startDate, 'yyyy年MM年dd月');
   }
