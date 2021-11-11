@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   strict: true,
   state: {
     teams: [
@@ -12,7 +12,7 @@ export default new Vuex.Store({
         10,
         '読売ジャイアンツ',
         '東京ドーム（東京都・文京区）',
-        new Date(1934, 12 + 1, 26),
+        new Date(1934, 12 - 1, 26),
         `大日本東京野球倶楽部（1934年）
 ↓
 東京巨人軍（1935年〜1946年）
@@ -23,7 +23,7 @@ export default new Vuex.Store({
         20,
         '阪神タイガース',
         '阪神甲子園球場（兵庫県・西宮市）',
-        new Date(1935, 12 + 1, 10),
+        new Date(1935, 12 - 1, 10),
         `大阪タイガース（1935年〜1940年途）
 ↓
 阪神軍（1940年途〜1946年）
@@ -34,7 +34,7 @@ export default new Vuex.Store({
         30,
         '中日ドラゴンズ',
         'ナゴヤドーム（愛知県・名古屋市東区）',
-        new Date(1936, 1 + 1, 15),
+        new Date(1936, 1 - 1, 15),
         `名古屋軍（1936年〜1943年）
 ↓
 産業軍（1944年）
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         40,
         '横浜DeNAベイスターズ',
         '横浜スタジアム（神奈川県・横浜市中区）',
-        new Date(1949, 11 + 1, 22),
+        new Date(1949, 11 - 1, 22),
         `大洋ホエールズ（1950年〜1952年）
 ↓
 大洋松竹ロビンス（1953年〜1954年）
@@ -68,7 +68,7 @@ export default new Vuex.Store({
         50,
         '広島東洋カープ',
         'MAZDA Zoom-Zoomスタジアム広島（広島県・広島市南区）',
-        new Date(1949, 12 + 1, 15),
+        new Date(1949, 12 - 1, 15),
         `広島カープ（1950年〜1967年）
 ↓
 広島東洋カープ（1968年〜）`
@@ -77,7 +77,7 @@ export default new Vuex.Store({
         60,
         '東京ヤクルトスワローズ',
         '明治神宮野球場（東京都・新宿区）',
-        new Date(1950, 1 + 1, 12),
+        new Date(1950, 1 - 1, 12),
         `国鉄スワローズ（1950年〜1965年途）
 ↓
 サンケイスワローズ（1965年途〜終了）
@@ -97,5 +97,26 @@ export default new Vuex.Store({
 
   mutations: {},
   actions: {},
+  getters: {
+    /**
+     * 全チームの情報を返す
+     * @param state - ステート
+     * @returns 全チームの情報
+     */
+    getTeams(state): Team[] {
+      return state.teams;
+    },
+
+    /**
+     * 選択したチームの情報
+     * @param state - ステート
+     * @returns 選択したチームの情報
+     */
+    getTeamById(state) {
+      return (id: number) => state.teams.filter((team) => team.id === id)[0];
+    },
+  },
   modules: {},
 });
+
+export default store;
