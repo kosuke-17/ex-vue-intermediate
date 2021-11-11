@@ -6,6 +6,10 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
+    path: '/teamDetail/:id',
+    component: () => import('../components/TeamDetail.vue'),
+  },
+  {
     path: '/ex01',
     component: () => import('../views/Ex01.vue'),
   },
