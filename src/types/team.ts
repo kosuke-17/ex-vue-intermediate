@@ -1,11 +1,19 @@
 export class Team {
   constructor(
+    private _id: number,
     private _name: string,
     private _homePlace: string,
     private _startDate: Date,
     private _history: string
   ) {}
 
+  public get id(): number {
+    return this._id;
+  }
+
+  public set id(id: number) {
+    this._id = id;
+  }
   public get name(): string {
     return this._name;
   }
