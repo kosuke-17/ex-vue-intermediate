@@ -32,7 +32,7 @@ export default class BaseballTeam extends Vue {
    * チーム一覧を表示する.
    */
   onback(): void {
-    this['$router'].push('/Ex01');
+    this['$router'].push('/ex01');
   }
 }
 </script>

@@ -1,3 +1,5 @@
+import { Clothe } from '@/types/clothe';
+import { Hotel } from '@/types/hotel';
 import { Team } from '@/types/team';
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -93,60 +95,60 @@ const store = new Vuex.Store({
 東京ヤクルトスワローズ（2006年〜）`
       ),
     ],
-    // hotels: [
-    //   new Hotel(
-    //     10,
-    //     '首都圏',
-    //     '横浜ベイホテル東急',
-    //     '神奈川県横浜市西区みなとみらい２－３－７',
-    //     '桜木町駅',
-    //     10000,
-    //     true
-    //   ),
-    //   new Hotel(
-    //     20,
-    //     '首都圏',
-    //     'パレスホテル東京',
-    //     '東京都千代田区丸の内１丁目１−１',
-    //     '東京駅',
-    //     20000,
-    //     false
-    //   ),
-    //   new Hotel(
-    //     30,
-    //     '首都圏',
-    //     'ホテルローズガーデン新宿',
-    //     '東京都新宿区西新宿８−１−３',
-    //     '西新宿駅',
-    //     5000,
-    //     true
-    //   ),
-    //   new Hotel(
-    //     40,
-    //     '首都圏',
-    //     '渋谷エクセルホテル東急',
-    //     '東京都渋谷区道玄坂１−１２−２',
-    //     '渋谷駅',
-    //     10000,
-    //     false
-    //   ),
-    //   new Hotel(
-    //     50,
-    //     '首都圏',
-    //     '東京ベイ舞浜ホテル',
-    //     '千葉県浦安市舞浜１−３４',
-    //     '舞浜駅',
-    //     15000,
-    //     true
-    //   ),
-    // ],
-    // clothes: [
-    //   new Clothe(10, "洋服", "ジャケット", 0, "赤", 10000, "S"),
-    //   new Clothe(20, "洋服", "パンツ", 0, "白", 20000, "M"),
-    //   new Clothe(30, "洋服", "Ｔシャツ", 1, "青", 5000, "M"),
-    //   new Clothe(40, "洋服", "帽子", 1, "白", 10000, "S"),
-    //   new Clothe(50, "洋服", "ジャケット", 0, "黄", 15000, "L"),
-    // ],
+    hotels: [
+      new Hotel(
+        10,
+        '首都圏',
+        '横浜ベイホテル東急',
+        '神奈川県横浜市西区みなとみらい２－３－７',
+        '桜木町駅',
+        10000,
+        true
+      ),
+      new Hotel(
+        20,
+        '首都圏',
+        'パレスホテル東京',
+        '東京都千代田区丸の内１丁目１−１',
+        '東京駅',
+        20000,
+        false
+      ),
+      new Hotel(
+        30,
+        '首都圏',
+        'ホテルローズガーデン新宿',
+        '東京都新宿区西新宿８−１−３',
+        '西新宿駅',
+        5000,
+        true
+      ),
+      new Hotel(
+        40,
+        '首都圏',
+        '渋谷エクセルホテル東急',
+        '東京都渋谷区道玄坂１−１２−２',
+        '渋谷駅',
+        10000,
+        false
+      ),
+      new Hotel(
+        50,
+        '首都圏',
+        '東京ベイ舞浜ホテル',
+        '千葉県浦安市舞浜１−３４',
+        '舞浜駅',
+        15000,
+        true
+      ),
+    ],
+    clothes: [
+      new Clothe(10, '洋服', 'ジャケット', 0, '赤', 10000, 'S'),
+      new Clothe(20, '洋服', 'パンツ', 0, '白', 20000, 'M'),
+      new Clothe(30, '洋服', 'Ｔシャツ', 1, '青', 5000, 'M'),
+      new Clothe(40, '洋服', '帽子', 1, '白', 10000, 'S'),
+      new Clothe(50, '洋服', 'ジャケット', 0, '黄', 15000, 'L'),
+    ],
   }, // end state
 
   mutations: {},
@@ -168,6 +170,46 @@ const store = new Vuex.Store({
      */
     getTeamById(state) {
       return (id: number) => state.teams.filter((team) => team.id === id)[0];
+    },
+
+    // 演習2
+
+    /**
+     * 全ホテルの情報.
+     * @param state - ステート
+     * @returns 全ホテルの情報
+     */
+    getHotelsAll(state): Hotel[] {
+      return state.hotels;
+    },
+
+    /**
+     * 入力した金額以下のホテルの情報.
+     * @param state - ステート
+     * @returns 入力した金額以下のホテルの情報
+     */
+    getHotelsLessThanPrice(state) {
+      return (price: number) =>
+        state.hotels.filter((hotel) => hotel.price <= price);
+    },
+
+    // 演習3
+
+    /**
+     *
+     * @param state - ステート
+     * @returns 性別と色で選択した衣装
+     */
+    getClotheByGenderAndColor(state) {
+      return (conditions: any) => {
+        const getClothesByGender = state.clothes.filter(
+          (clothe) => clothe.gender == conditions.gender
+        );
+        const getClothesByGenderAndColor = getClothesByGender.filter(
+          (clothe) => clothe.color == conditions.color
+        );
+        return getClothesByGenderAndColor;
+      };
     },
   },
   modules: {},

@@ -16,7 +16,7 @@ import { Team } from '@/types/team';
 import { Component, Vue } from 'vue-property-decorator';
 import store from '../store';
 
-@Component({})
+@Component
 export default class baseballTeamList extends Vue {
   /**
    * チーム一覧を表示.

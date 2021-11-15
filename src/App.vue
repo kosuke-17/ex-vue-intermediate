@@ -4,6 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/ex01">Ex01</router-link> |
+      <router-link to="/ex02">Ex02</router-link> |
+      <router-link to="/ex03">Ex03</router-link> |
     </div>
     <router-view />
   </div>
@@ -14,7 +16,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
 
